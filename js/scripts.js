@@ -75,16 +75,20 @@ $(document).ready(function() {
       movecount += 1;
       $("#" + clickedSpace).html("<p>" + board1.spaces[clickedSpace].value + "</p>");
       if (board1.checkForWin()) {
-        $("#win").text(board1.nextMark + " wins!");
+        $("#win").prepend(board1.nextMark + " wins!");
+        $("#win").show();
         playing = false;
       }
       if (movecount === 9) {
-        $("#win").text("Draw.");
+        $("#win").prepend("Draw.");
+        $("#win").show();
         playing = false;
       }
       board1.switchMark();
     }
-
   });
 
+  $("#play-again").click(function() {
+    location.reload();
+  });
 });

@@ -1,6 +1,6 @@
 #gridContainer{
-  height: 80vh;
-  width: 80vh;
+  height: 70vh;
+  width: 70vh;
   background-color: black;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -16,7 +16,7 @@
   width: 100%;
   background-color: white;
   border: none;
-  font-size: 14vh;
+  font-size: 12vh;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
   box-sizing: border-box;
@@ -24,4 +24,13 @@
 
 h1 {
   text-align: center;
+}
+
+#play-again {
+  display: block;
+  margin: 0 auto;
+}
+
+#win {
+  display: none;
 }
