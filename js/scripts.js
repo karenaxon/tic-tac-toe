@@ -1,3 +1,38 @@
+//AI
+function DecisionEngine(targetBoard){
+  //random number 1-100
+  //if number<50
+  //block,center, corner edge
+  //if number >=50 && number<75
+  //center,corner edge
+
+  
+  //check for 2 in a row
+  
+  //checkcenter
+  targeBoard.checkSpace(4);
+
+  //check corner
+  //if chekc corners doesnt return false then select the thing or whatever
+  //check edge
+}
+function checkCorner(target){
+  let corners = [];
+    for (let i of [0, 2, 6, 8]){
+      if(target.checkSpace(i) === ""){
+        corners.push(i);
+      }
+    }
+    if (corners.length > 0){
+      let selector = (parseInt(Math.random()*100))%(corners.length-1)
+      return corners[selector];
+    }else{
+      return false;
+    }
+}
+
+
+//Objects
 function Board() {
   let zero = new Space();
   let one = new Space();
