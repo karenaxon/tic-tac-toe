@@ -31,22 +31,22 @@ Space.prototype.addPairToCheck = function(space1, space2) {
 };
 
 Board.prototype.checkSpace = function(number) {
-  return spaces[number].value;
+  return this.spaces[number].value;
 };
 
 Board.prototype.updateSpace = function(number) {
   if (this.checkSpace(number) !== "") {
     return false;
   }
-  spaces[number].value = this.nextMark;
-  this.switchMark();
+  this.spaces[number].value = this.nextMark;
+  return true;
 };
 
 Board.prototype.switchMark = function() {
   if (this.nextMark === 'x') {
     this.nextMark = 'o';
   } else {
-    this.nextMark = 'x'
+    this.nextMark = 'x';
   }
 };
 
@@ -61,9 +61,30 @@ Board.prototype.checkForWin = function() {
     }
   }
   return false;
-}
+};
 
-let board1 = new Board();
-console.log(board1.spaces[4].pairsToCheck);
+// UI logic
 
-//adding comment
+$(document).ready(function() {
+  let board1 = new Board();
+  let playing = true;
+  let movecount = 0;
+  $(".spaceDiv").click(function() {
+    let clickedSpace = parseInt(this.id);
+    if (playing && (board1.updateSpace(clickedSpace))){
+      movecount += 1;
+      $("#" + clickedSpace).html("<p>" + board1.spaces[clickedSpace].value + "</p>");
+      if (board1.checkForWin()) {
+        $("#win").text(board1.nextMark + " wins!");
+        playing = false;
+      }
+      if (movecount === 9) {
+        $("#win").text("Draw.");
+        playing = false;
+      }
+      board1.switchMark();
+    }
+
+  });
+
+});
