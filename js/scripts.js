@@ -65,3 +65,5 @@ Board.prototype.checkForWin = function() {
 
 let board1 = new Board();
 console.log(board1.spaces[4].pairsToCheck);
+
+//adding comment
