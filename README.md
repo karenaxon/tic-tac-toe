@@ -1,3 +1,39 @@
+# _Tic Tak Toe IN SPACE!_
+
+#### By _**Aaron Minnick, Karen Axon, & Skylar Brockbank**_
+
+#### _A Tic Tak Toe Website with a computer player option_
+
+## Technologies Used
+
+* _HTML_
+* _CSS(Bootstrap)_
+* _Git_
+* _Javascript_
+* _JQuery_
+
+## Description
+
+_A tic tak toe game with single and 2 player modes. The single player mode as a computer player designed to play a series of fun games of tic tak toe with the user_
+
+## Setup/Installation Requirements
+
+* _Click the green "Code" button and Download Zip _
+* _Extract the contents of the zip file to a folder on your machine_
+* _Run the Index.html file with your browser of choice (I recommend Chrome)_
+
+* _alternatively you can [clone this repository](https://www.learnhowtoprogram.com/introduction-to-programming/git-html-and-css/practice-github-remote-repositories) from Git Hub_
+
+
+## Known Bugs
+
+* _No Known Bugs_
+
+## License
+
+*[MIT](https://opensource.org/licenses/MIT) Licenced
+*Copyright (c) _2021_ _Aaron Minnick_ _Karen Axon_ _Skylar Brockbank_
+
 ## Tests
 
 ```
@@ -31,5 +67,5 @@ Code:
       console.log(board1.spaces[4].pairsToCheck);
 Expected Output: [[], [], [], []]
       
-
+Etc...
 ```

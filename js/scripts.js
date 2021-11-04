@@ -54,7 +54,7 @@ Board.prototype.checkForWin = function() {
 
 Board.prototype.computerMove = function() {
   let dumbMove = false;
-  if (Math.random() > .5) {
+  if (Math.random() > .65) {
     dumbMove = true;
   }
   let targetSpace = [this.checkOneOffs('o'), this.checkOneOffs('d'), this.checkCenter(), this.checkCorner(), this.checkEdge(), this.anyOpenSpace()];
@@ -210,39 +210,17 @@ $(document).ready(function() {
  
 //canvas
 function drawStars() {
-  let starCanvas = document.getElementById('starfield');
-  let context = starCanvas.getContext("2d");
-  for (let i = 0; i <= 1000; i++) {
-    let x = Math.random() * starCanvas.width;
-    let y = Math.random() * starCanvas.height;
-    let radius = Math.random() * 1.2;
-    context.beginPath();
-    context.arc(x, y, radius, 0, 360);
-    context.fillStyle = "rgb(255, 255, 255)";
-    context.fill();
-  }
-
-  starCanvas = document.getElementById('scroll-starfield');
-  context = starCanvas.getContext("2d");
-  for (let i = 0; i <= 500; i++) {
-    let x = Math.random() * starCanvas.width;
-    let y = Math.random() * starCanvas.height;
-    let radius = Math.random() * 1.2;
-    context.beginPath();
-    context.arc(x, y, radius, 0, 360);
-    context.fillStyle = "rgb(255, 255, 255)";
-    context.fill();
-  }
-
-  starCanvas = document.getElementById('scroll-starfield2');
-  context = starCanvas.getContext("2d");
-  for (let i = 0; i <= 500; i++) {
-    let x = Math.random() * starCanvas.width;
-    let y = Math.random() * starCanvas.height;
-    let radius = Math.random() * 1.2;
-    context.beginPath();
-    context.arc(x, y, radius, 0, 360);
-    context.fillStyle = "rgb(255, 255, 255)";
-    context.fill();
+  for (let c = 0; c < 5; c++) {
+    let starCanvas = document.getElementById('scroll-starfield' + c.toString());
+    let context = starCanvas.getContext("2d");
+    for (let i = 0; i <= 400; i++) {
+      let x = Math.random() * starCanvas.width;
+      let y = Math.random() * starCanvas.height;
+      let radius = Math.random() * 1.2;
+      context.beginPath();
+      context.arc(x, y, radius, 0, 360);
+      context.fillStyle = "rgb(255, 255, 255)";
+      context.fill();
+    }
   }
 }

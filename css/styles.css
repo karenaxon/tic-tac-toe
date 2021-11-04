@@ -11,6 +11,9 @@
   filter: drop-shadow(0 0 1vh white);
   padding: 5vh;
 }
+#gridContainerContainer {
+  display: none;
+}
 
 .spaceDiv {
   height: 100%; 
@@ -41,40 +44,63 @@ h1 {
   display: none;
 }
 
-#starfield {
-  background-color: rgb(23, 20, 32);
-  width: 300%;
+.scroll {
+  animation: starscroll linear infinite both;
   height: 100%;
   position: absolute;
-  z-index: -3;
-  animation: starscroll 12s linear infinite;
 }
 
-#scroll-starfield {
+#scroll-starfield0 {
+  width: 300%;
+  z-index: -3;
+  animation-duration: 18s;
+}
+
+#scroll-starfield1 {
   width: 400%;
-  height: 100%;
-  position: absolute;
   z-index: -2;
-  animation: starscroll 8s linear infinite;
+  animation-duration: 11s;
 }
 #scroll-starfield2 {
   width: 600%;
-  height: 100%;
-  position: absolute;
   z-index: -1;
-  animation: starscroll 4s linear infinite;
+  animation-duration: 7s;
+}
+
+#scroll-starfield3 {
+  width: 400%;
+  z-index: -2;
+  animation-duration: 11s;
+  animation-delay: 5.5s;
+}
+#scroll-starfield4 {
+  width: 600%;
+  z-index: -1;
+  animation-duration: 7s;
+  animation-delay: 3.5s;
 }
 
 @keyframes starscroll {
   from {
-
+    opacity: 0%;
+    transform: translateX(0%);
   }
 
+  20% {
+    opacity: 100%;
+  }
+
+  90% {
+    opacity: 100%;
+  }
+  
   to {
+    opacity: 0%;
     transform: translateX(-66%);
   }
 }
 
 body {
   overflow: hidden;
+  background-color: rgb(23, 20, 32);
 }
