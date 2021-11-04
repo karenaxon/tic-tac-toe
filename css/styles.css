@@ -1,4 +1,4 @@
-#gridContainer{
+#grid-container{
   height: 70vh;
   width: 70vh;
   background-color: none;
@@ -11,28 +11,28 @@
   filter: drop-shadow(0 0 1vh white);
   padding: 5vh;
 }
-#gridContainerContainer {
+#grid-container-container {
   display: none;
 }
-#mainMenuContainer{
-  margin: 0 auto;
-}
-#mainMenu {
 
+#main-menu {
   filter:drop-shadow(0 0 10vh rgba(191, 251, 255, 0.856));
   margin: 0 auto;
   display: grid;
 }
-#mainSubGrid {
+
+#main-sub-grid {
   justify-self: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-#mainSubGrid > button {
+
+#main-sub-grid > button {
   justify-self: center;
+  padding: .75em;
 }
 
-#mainSubGrid > button:hover {
+#main-sub-grid > button:hover {
   background-color: rgb(253, 228, 84);
   color: rgb(107, 77, 37);
 }

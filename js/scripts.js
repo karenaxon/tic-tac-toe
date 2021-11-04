@@ -166,9 +166,26 @@ Space.prototype.addPairToCheck = function(space1, space2) {
 // UI logic
 
 $(document).ready(function() {
+  drawStars();
+  
   let board1 = new Board();
   let playing = true;
   let moveCount = 0;
+  let vsComp = true;
+
+  $("#single").click(function() {
+    vsComp = true;
+    $("#grid-container-container").delay(501).fadeIn(500);
+    $("#main-menu").fadeOut(500);
+    
+  });
+
+  $("#double").click(function() {
+    vsComp = false;
+    $("#grid-container-container").delay(501).fadeIn(500);
+    $("#main-menu").fadeOut(500);
+  });
+
   $(".spaceDiv").click(function() {
     let clickedSpace = parseInt(this.id);
     if (playing && (board1.checkSpace(clickedSpace) === '')){
@@ -187,7 +204,7 @@ $(document).ready(function() {
       }
       board1.switchMark();
       //if the user is playing against the computer this is where computer move goes
-      if (playing) {
+      if (playing && vsComp) {
         board1.computerMove();
         moveCount++;
         if (board1.checkForWin()) {
@@ -204,7 +221,6 @@ $(document).ready(function() {
     location.reload();
   });
 
-  drawStars();
 });
 
  
