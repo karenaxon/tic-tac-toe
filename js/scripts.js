@@ -1,37 +1,3 @@
-//AI
-function DecisionEngine(targetBoard){
-  //random number 1-100
-  //if number<50
-  //block,center, corner edge
-  //if number >=50 && number<75
-  //center,corner edge
-
-  
-  //check for 2 in a row
-  
-  //checkcenter
-  targeBoard.checkSpace(4);
-
-  //check corner
-  //if chekc corners doesnt return false then select the thing or whatever
-  //check edge
-}
-function checkCorner(target){
-  let corners = [];
-    for (let i of [0, 2, 6, 8]){
-      if(target.checkSpace(i) === ""){
-        corners.push(i);
-      }
-    }
-    if (corners.length > 0){
-      let selector = (parseInt(Math.random()*100))%(corners.length-1)
-      return corners[selector];
-    }else{
-      return false;
-    }
-}
-
-
 //Objects
 function Board() {
   let zero = new Space();
@@ -52,29 +18,18 @@ function Board() {
   four.addPairToCheck(two, six);
   five.addPairToCheck(two, eight);  
   seven.addPairToCheck(six, eight);
-
+  
   this.nextMark = 'x';
 };
 
-function Space() {
-  this.pairsToCheck = [];
-  this.value = ""; // x o or blank
-}
-
-Space.prototype.addPairToCheck = function(space1, space2) {
-  this.pairsToCheck.push([space1, space2]);
-};
 
 Board.prototype.checkSpace = function(number) {
   return this.spaces[number].value;
 };
 
 Board.prototype.updateSpace = function(number) {
-  if (this.checkSpace(number) !== "") {
-    return false;
-  }
+  console.log(this.spaces[number]);
   this.spaces[number].value = this.nextMark;
-  return true;
 };
 
 Board.prototype.switchMark = function() {
@@ -98,6 +53,64 @@ Board.prototype.checkForWin = function() {
   return false;
 };
 
+Board.prototype.computerMove = function() {
+  //maybe some randomness
+  let targetSpace = [this.checkCenter(), this.checkCorner(), this.checkEdge()];
+  for(let i =0; i < targetSpace.length; i++) {
+    if(targetSpace[i] != -1){
+      this.updateSpace(targetSpace[i]);
+      $("#" + targetSpace[i]).html("<p>" + this.spaces[targetSpace[i]].value + "</p>");
+      break;
+    }
+  }
+}
+
+Board.prototype.checkCenter = function() {
+  if(this.checkSpace(4) === ""){
+    return 4;
+  }
+  return -1;
+}
+
+Board.prototype.checkCorner = function(){
+  let corners = [];
+    for (let i of [0, 2, 6, 8]){
+      if(this.checkSpace(i) === ""){
+        corners.push(i);
+      }
+    }
+    if (corners.length > 0){
+      let selector = (parseInt(Math.random()*100))%(corners.length);
+      return corners[selector];
+    }else{
+      return -1;
+    }
+}
+
+Board.prototype.checkEdge = function(){
+  let edges = [];
+    for (let i of [1, 3, 5, 7]){
+      if(this.checkSpace(i) === ""){
+        edges.push(i);
+      }
+    }
+    if (edges.length > 0){
+      let selector = (parseInt(Math.random()*100))%(edges.length);
+      return edges[selector];
+    }else{
+      return -1;
+    }
+}
+
+function Space() {
+  this.pairsToCheck = [];
+  this.value = ""; // x o or blank
+}
+
+Space.prototype.addPairToCheck = function(space1, space2) {
+  this.pairsToCheck.push([space1, space2]);
+};
+
 // UI logic
 
 $(document).ready(function() {
@@ -106,7 +119,8 @@ $(document).ready(function() {
   let movecount = 0;
   $(".spaceDiv").click(function() {
     let clickedSpace = parseInt(this.id);
-    if (playing && (board1.updateSpace(clickedSpace))){
+    if (playing && (board1.checkSpace(clickedSpace) === '')){
+      board1.updateSpace(clickedSpace);
       movecount += 1;
       $("#" + clickedSpace).html("<p>" + board1.spaces[clickedSpace].value + "</p>");
       if (board1.checkForWin()) {
@@ -120,6 +134,17 @@ $(document).ready(function() {
         playing = false;
       }
       board1.switchMark();
+      //if the user is playing against the computer this is where computer move goes
+      if (playing) {
+        board1.computerMove();
+        if (board1.checkForWin()) {
+          $("#win").prepend(board1.nextMark + " wins!");
+          $("#win").show();
+          playing = false;
+        }
+        board1.switchMark();
+      }
+      
     }
   });
 
