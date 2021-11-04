@@ -8,9 +8,50 @@
     <meta charset="UTF-8">  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <title>Tic Tac Toe IN SPACE!</title>
   </head>
   <body>
-    <h1>Tic Tac Toe</h1>
+
+    <canvas class = "scroll" id="scroll-starfield0" width="2400" height ="600"></canvas>
+    <canvas class = "scroll" id="scroll-starfield1" width="2400" height ="600"></canvas>
+    <canvas class = "scroll" id="scroll-starfield2" width="2400" height ="600"></canvas>
+    <canvas class = "scroll" id="scroll-starfield3" width="2400" height ="600"></canvas>
+    <canvas class = "scroll" id="scroll-starfield4" width="2400" height ="600"></canvas>
+
+
+    
+    <div id="main-menu">
+      <h1>TIC TAC TOE</h1>
+      <h2>Select Your Game Mode</h2>
+      <div id="main-sub-grid">
+        <button class="btn btn-dark" id="single">Single Player</button>
+        <button class="btn btn-dark" id="double">Two Player</button>
+      </div>
+    </div>
+    
+    <div id="grid-container-container">
+      <div id="grid-container">
+        <div class="spaceDiv" id="0" value="0">
+        </div>
+        <div class="spaceDiv" id="1" value="1">
+        </div>
+        <div class="spaceDiv" id="2" value="2">
+        </div>
+        <div class="spaceDiv" id="3" value="3">
+        </div>
+        <div class="spaceDiv" id="4" value="4">
+        </div>
+        <div class="spaceDiv" id="5" value="5">
+        </div>
+        <div class="spaceDiv" id="6" value="6">
+        </div>
+        <div class="spaceDiv" id="7" value="7">
+        </div>
+        <div class="spaceDiv" id="8" value="8">
+        </div>
+      </div>
+    </div>
+    <h1 id="win"><span id="wintext"></span><button class="btn btn-dark" id="play-again">Play again!</button><button class="btn btn-dark" id="switch-modes">Change game mode.</button></h1>
+
   </body>
-</html> 
+</html>         

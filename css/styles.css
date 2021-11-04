@@ -1,0 +1,132 @@
+#grid-container{
+  height: 70vh;
+  width: 70vh;
+  background-color: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vh;
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0 auto;
+  overflow: hidden;
+  filter: drop-shadow(0 0 1vh white);
+  padding: 5vh;
+}
+#grid-container-container {
+  display: none;
+}
+
+#main-menu {
+  filter:drop-shadow(0 0 10vh rgba(191, 251, 255, 0.856));
+  margin: 0 auto;
+  display: grid;
+}
+
+#main-sub-grid {
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#main-sub-grid > button {
+  justify-self: center;
+  padding: .75em;
+}
+
+#main-sub-grid > button:hover {
+  background-color: rgb(253, 228, 84);
+  color: rgb(107, 77, 37);
+}
+.spaceDiv {
+  height: 100%; 
+  width: 100%;
+  background-color: white;
+  border: none;
+  font-size: 10vh;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.spaceDiv:hover{
+  filter: drop-shadow(0 0 2vh rgb(255, 208, 0));
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+h2 {
+  text-align:  center;
+  color: white;
+}
+
+#play-again {
+  display: block;
+  margin: 0 auto;
+}
+
+#win {
+  display: none;
+}
+
+.scroll {
+  animation: starscroll linear infinite both;
+  height: 100%;
+  position: absolute;
+}
+
+#scroll-starfield0 {
+  width: 300%;
+  z-index: -3;
+  animation-duration: 18s;
+}
+
+#scroll-starfield1 {
+  width: 400%;
+  z-index: -2;
+  animation-duration: 11s;
+}
+#scroll-starfield2 {
+  width: 600%;
+  z-index: -1;
+  animation-duration: 7s;
+}
+
+#scroll-starfield3 {
+  width: 400%;
+  z-index: -2;
+  animation-duration: 11s;
+  animation-delay: 5.5s;
+}
+#scroll-starfield4 {
+  width: 600%;
+  z-index: -1;
+  animation-duration: 7s;
+  animation-delay: 3.5s;
+}
+
+@keyframes starscroll {
+  from {
+    opacity: 0%;
+    transform: translateX(0%);
+  }
+
+  20% {
+    opacity: 100%;
+  }
+
+  90% {
+    opacity: 100%;
+  }
+  
+  to {
+    opacity: 0%;
+    transform: translateX(-66%);
+  }
+}
+
+body {
+  overflow: hidden;
+  background-color: rgb(23, 20, 32);
+}
