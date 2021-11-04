@@ -1,14 +1,15 @@
 #gridContainer{
   height: 70vh;
   width: 70vh;
-  background-color: black;
+  background-color: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1vh;
+  gap: 2vh;
   grid-template-rows: repeat(3, 1fr);
-  border: solid lightgrey 3vh;
   margin: 0 auto;
   overflow: hidden;
+  filter: drop-shadow(0 0 1vh white);
+  padding: 5vh;
 }
 
 .spaceDiv {
@@ -16,14 +17,19 @@
   width: 100%;
   background-color: white;
   border: none;
-  font-size: 12vh;
+  font-size: 10vh;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
   box-sizing: border-box;
 }
 
+.spaceDiv:hover{
+  filter: drop-shadow(0 0 2vh rgb(255, 208, 0));
+}
+
 h1 {
   text-align: center;
+  color: white;
 }
 
 #play-again {
@@ -33,4 +39,42 @@ h1 {
 
 #win {
   display: none;
+}
+
+#starfield {
+  background-color: rgb(23, 20, 32);
+  width: 300%;
+  height: 100%;
+  position: absolute;
+  z-index: -3;
+  animation: starscroll 12s linear infinite;
+}
+
+#scroll-starfield {
+  width: 400%;
+  height: 100%;
+  position: absolute;
+  z-index: -2;
+  animation: starscroll 8s linear infinite;
+}
+#scroll-starfield2 {
+  width: 600%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  animation: starscroll 4s linear infinite;
+}
+
+@keyframes starscroll {
+  from {
+
+  }
+
+  to {
+    transform: translateX(-66%);
+  }
+}
+
+body {
+  overflow: hidden;
 }

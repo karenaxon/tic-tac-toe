@@ -203,4 +203,46 @@ $(document).ready(function() {
   $("#play-again").click(function() {
     location.reload();
   });
+
+  drawStars();
 });
+
+ 
+//canvas
+function drawStars() {
+  let starCanvas = document.getElementById('starfield');
+  let context = starCanvas.getContext("2d");
+  for (let i = 0; i <= 1000; i++) {
+    let x = Math.random() * starCanvas.width;
+    let y = Math.random() * starCanvas.height;
+    let radius = Math.random() * 1.2;
+    context.beginPath();
+    context.arc(x, y, radius, 0, 360);
+    context.fillStyle = "rgb(255, 255, 255)";
+    context.fill();
+  }
+
+  starCanvas = document.getElementById('scroll-starfield');
+  context = starCanvas.getContext("2d");
+  for (let i = 0; i <= 500; i++) {
+    let x = Math.random() * starCanvas.width;
+    let y = Math.random() * starCanvas.height;
+    let radius = Math.random() * 1.2;
+    context.beginPath();
+    context.arc(x, y, radius, 0, 360);
+    context.fillStyle = "rgb(255, 255, 255)";
+    context.fill();
+  }
+
+  starCanvas = document.getElementById('scroll-starfield2');
+  context = starCanvas.getContext("2d");
+  for (let i = 0; i <= 500; i++) {
+    let x = Math.random() * starCanvas.width;
+    let y = Math.random() * starCanvas.height;
+    let radius = Math.random() * 1.2;
+    context.beginPath();
+    context.arc(x, y, radius, 0, 360);
+    context.fillStyle = "rgb(255, 255, 255)";
+    context.fill();
+  }
+}
