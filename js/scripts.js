@@ -28,7 +28,6 @@ Board.prototype.checkSpace = function(number) {
 };
 
 Board.prototype.updateSpace = function(number) {
-  console.log(this.spaces[number]);
   this.spaces[number].value = this.nextMark;
 };
 
@@ -54,10 +53,17 @@ Board.prototype.checkForWin = function() {
 };
 
 Board.prototype.computerMove = function() {
-  //maybe some randomness
-  let targetSpace = [this.checkCenter(), this.checkCorner(), this.checkEdge()];
-  for(let i =0; i < targetSpace.length; i++) {
+  let dumbMove = false;
+  if (Math.random() > .5) {
+    dumbMove = true;
+  }
+  let targetSpace = [this.checkOneOffs('o'), this.checkOneOffs('d'), this.checkCenter(), this.checkCorner(), this.checkEdge(), this.anyOpenSpace()];
+  for(let i = 0; i < targetSpace.length; i++) {
     if(targetSpace[i] != -1){
+      if (dumbMove) {
+        dumbMove = false;
+        continue;
+      }
       this.updateSpace(targetSpace[i]);
       $("#" + targetSpace[i]).html("<p>" + this.spaces[targetSpace[i]].value + "</p>");
       break;
@@ -65,12 +71,50 @@ Board.prototype.computerMove = function() {
   }
 }
 
+Board.prototype.checkOneOffs = function(mode) {
+  let mark = '';
+  switch (mode) {
+    case ('o'):
+      mark = this.nextMark;
+      break;
+    case ('d'):
+      if (this.nextMark === 'o') {
+        mark = 'x';
+      } else {
+        mark = 'o';
+      }
+  }
+  
+  for(let space of this.spaces){
+    if (space.pairsToCheck.length > 0) {
+      for (let pair of space.pairsToCheck) {
+        let blankCount = 0;
+        let blankSpace = 0;
+        let markCount = 0;
+        for (i of [space, pair[0], pair[1]]) {
+          if (i.value === '') {
+            blankCount++;
+            blankSpace = this.spaces.indexOf(i);
+          }
+          if (i.value === mark) {
+            markCount++
+          }
+        }
+        if (blankCount === 1 && markCount === 2) {
+          return blankSpace;
+        }
+      }
+    }
+  }
+  return -1;
+}
+
 Board.prototype.checkCenter = function() {
   if(this.checkSpace(4) === ""){
     return 4;
   }
   return -1;
-}
+};
 
 Board.prototype.checkCorner = function(){
   let corners = [];
@@ -85,7 +129,7 @@ Board.prototype.checkCorner = function(){
     }else{
       return -1;
     }
-}
+};
 
 Board.prototype.checkEdge = function(){
   let edges = [];
@@ -100,6 +144,14 @@ Board.prototype.checkEdge = function(){
     }else{
       return -1;
     }
+};
+
+Board.prototype.anyOpenSpace = function() {
+  for (let i = 0; i < 9; i++) {
+    if (this.checkSpace(i) === '') {
+      return i;
+    }
+  }
 }
 
 function Space() {
@@ -116,19 +168,19 @@ Space.prototype.addPairToCheck = function(space1, space2) {
 $(document).ready(function() {
   let board1 = new Board();
   let playing = true;
-  let movecount = 0;
+  let moveCount = 0;
   $(".spaceDiv").click(function() {
     let clickedSpace = parseInt(this.id);
     if (playing && (board1.checkSpace(clickedSpace) === '')){
       board1.updateSpace(clickedSpace);
-      movecount += 1;
       $("#" + clickedSpace).html("<p>" + board1.spaces[clickedSpace].value + "</p>");
       if (board1.checkForWin()) {
         $("#win").prepend(board1.nextMark + " wins!");
         $("#win").show();
         playing = false;
       }
-      if (movecount === 9) {
+      moveCount++;
+      if (playing && moveCount === 9) {
         $("#win").prepend("Draw.");
         $("#win").show();
         playing = false;
@@ -137,14 +189,14 @@ $(document).ready(function() {
       //if the user is playing against the computer this is where computer move goes
       if (playing) {
         board1.computerMove();
+        moveCount++;
         if (board1.checkForWin()) {
           $("#win").prepend(board1.nextMark + " wins!");
           $("#win").show();
           playing = false;
         }
         board1.switchMark();
-      }
-      
+      }   
     }
   });
 
