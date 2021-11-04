@@ -192,13 +192,13 @@ $(document).ready(function() {
       board1.updateSpace(clickedSpace);
       $("#" + clickedSpace).html("<p>" + board1.spaces[clickedSpace].value + "</p>");
       if (board1.checkForWin()) {
-        $("#win").prepend(board1.nextMark + " wins!");
+        $("#wintext").text(board1.nextMark + " wins!");
         $("#win").show();
         playing = false;
       }
       moveCount++;
       if (playing && moveCount === 9) {
-        $("#win").prepend("Draw.");
+        $("#wintext").text("Draw.");
         $("#win").show();
         playing = false;
       }
@@ -208,7 +208,7 @@ $(document).ready(function() {
         board1.computerMove();
         moveCount++;
         if (board1.checkForWin()) {
-          $("#win").prepend(board1.nextMark + " wins!");
+          $("#wintext").text(board1.nextMark + " wins!");
           $("#win").show();
           playing = false;
         }
@@ -218,6 +218,16 @@ $(document).ready(function() {
   });
 
   $("#play-again").click(function() {
+    board1 = new Board();
+    $("#grid-container-container").fadeOut(500).delay(1).fadeIn(500);
+    $(".spaceDiv").text("");
+    $('#wintext').text("");
+    $('#win').hide();
+    moveCount = 0;
+    playing = true;
+  });
+
+  $("#switch-modes").click(function() {
     location.reload();
   });
 

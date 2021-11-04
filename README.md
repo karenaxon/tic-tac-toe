@@ -1,8 +1,8 @@
-# _Tic Tak Toe IN SPACE!_
+# _Tic Tac Toe IN SPACE!_
 
 #### By _**Aaron Minnick, Karen Axon, & Skylar Brockbank**_
 
-#### _A Tic Tak Toe Website with a computer player option_
+#### _A Tic Tac Toe Website with a computer player option_
 
 ## Technologies Used
 
@@ -14,11 +14,11 @@
 
 ## Description
 
-_A tic tak toe game with single and 2 player modes. The single player mode as a computer player designed to play a series of fun games of tic tak toe with the user_
+_A tic tac toe game with single and 2 player modes. The single player mode has a computer player designed to play a series of fun games of tic tac toe with the user_
 
 ## Setup/Installation Requirements
 
-* _Click the green "Code" button and Download Zip _
+* _Click the green "Code" button and Download Zip_
 * _Extract the contents of the zip file to a folder on your machine_
 * _Run the Index.html file with your browser of choice (I recommend Chrome)_
 
@@ -32,9 +32,9 @@ _A tic tak toe game with single and 2 player modes. The single player mode as a 
 ## License
 
 *[MIT](https://opensource.org/licenses/MIT) Licenced
-*Copyright (c) _2021_ _Aaron Minnick_ _Karen Axon_ _Skylar Brockbank_
+*Copyright (c) _2021_ _Aaron Minnick, Karen Axon, Skylar Brockbank_
 
-## Tests
+## Tests (incomplete)
 
 ```
 Describe: Space()
