@@ -14,7 +14,28 @@
 #gridContainerContainer {
   display: none;
 }
+#mainMenuContainer{
+  margin: 0 auto;
+}
+#mainMenu {
 
+  filter:drop-shadow(0 0 10vh rgba(191, 251, 255, 0.856));
+  margin: 0 auto;
+  display: grid;
+}
+#mainSubGrid {
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#mainSubGrid > button {
+  justify-self: center;
+}
+
+#mainSubGrid > button:hover {
+  background-color: rgb(253, 228, 84);
+  color: rgb(107, 77, 37);
+}
 .spaceDiv {
   height: 100%; 
   width: 100%;
@@ -32,6 +53,11 @@
 
 h1 {
   text-align: center;
+  color: white;
+}
+
+h2 {
+  text-align:  center;
   color: white;
 }
 
